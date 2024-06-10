@@ -79,7 +79,7 @@ app.get("/emprestimos/encontrar/data", emprestimo.encontrarEmprestimoPorPeriodo)
 app.get("/funcionario", funcionario.listar);
 app.get("/funcionario/:idfuncionarios", funcionario.selecionar);
 app.post("/funcionario", funcionario.criar);
-app.put("/funcionario/:idfuncionario", funcionario.alterar);
+app.patch("/funcionario/:idfuncionarios", funcionario.alterar);
 app.delete("/funcionario/:idfuncionarios", funcionario.deletar);
 
 app.listen(4000);
