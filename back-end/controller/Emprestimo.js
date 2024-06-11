@@ -68,6 +68,7 @@ async function emprestar(request, response){
     }
 }
 
+/*
 async function alterar(request, response){
     if(!request.body.idlivro || !request.body.idpessoa){
         response.status(500).send("Parâmetros obrigatórios faltando.");
@@ -86,6 +87,7 @@ async function alterar(request, response){
         .then(resultado => {response.status(200).json(resultado)})
         .catch(erro => response.status(500).json(erro));
 }
+*/
 
 async function devolver(request, response){
     if(!request.body.idlivro){
@@ -163,6 +165,7 @@ async function encontrarEmprestimoPorPeriodo(request, response){
     }
 }
 
+/*
 async function deletar(request, response){
     await emprestimo
         .destroy({
@@ -173,5 +176,5 @@ async function deletar(request, response){
         .then(resultado => {response.status(200).json(resultado)})
         .catch(erro => {response.status(500).json(erro)});
 }
-
-export default {listar, selecionar, emprestar, alterar, deletar, devolver, retornarEmprestimosPendentes, encontrarHistóricoDePessoa, encontrarEmprestimoPorPeriodo};
+*/
+export default {listar, selecionar, emprestar, devolver, retornarEmprestimosPendentes, encontrarHistóricoDePessoa, encontrarEmprestimoPorPeriodo};

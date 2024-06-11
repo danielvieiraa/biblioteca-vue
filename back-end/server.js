@@ -68,9 +68,7 @@ app.delete("/livroautor/:idlivroautor", livroautor.deletar);
 app.get("/emprestimos", emprestimo.listar);
 app.get("/emprestimos/:idemprestimo", emprestimo.selecionar);
 app.post("/emprestimos", emprestimo.emprestar);
-app.patch("/emprestimos/:idemprestimo", emprestimo.alterar);
 app.patch("/emprestimos/devolucao/:idemprestimo", emprestimo.devolver);
-app.delete("/emprestimos/:idemprestimo", emprestimo.deletar);
 app.get("/emprestimos/devolucao/pendentes", emprestimo.retornarEmprestimosPendentes);
 app.get("/emprestimos/historico/:idpessoa", emprestimo.encontrarHistóricoDePessoa);
 app.get("/emprestimos/encontrar/data", emprestimo.encontrarEmprestimoPorPeriodo);
@@ -79,7 +77,7 @@ app.get("/emprestimos/encontrar/data", emprestimo.encontrarEmprestimoPorPeriodo)
 app.get("/funcionario", funcionario.listar);
 app.get("/funcionario/:idfuncionarios", funcionario.selecionar);
 app.post("/funcionario", funcionario.criar);
-app.patch("/funcionario/:idfuncionarios", funcionario.alterar);
+app.put("/funcionario/:idfuncionarios", funcionario.alterar);
 app.delete("/funcionario/:idfuncionarios", funcionario.deletar);
 
 app.listen(4000);
