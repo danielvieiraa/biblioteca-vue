@@ -65,12 +65,10 @@ app.put("/livroautor/:idlivroautor", livroautor.alterar);
 app.delete("/livroautor/:idlivroautor", livroautor.deletar);
 
 // Métodos Empréstimo
-app.get("/emprestimos", emprestimo.listar);
-app.get("/emprestimos/:idemprestimo", emprestimo.selecionar);
-app.post("/emprestimos", emprestimo.emprestar);
-app.patch("/emprestimos/devolucao/:idemprestimo", emprestimo.devolver);
-app.get("/emprestimos/devolucao/pendentes", emprestimo.retornarEmprestimosPendentes);
-app.get("/emprestimos/historico/:idpessoa", emprestimo.encontrarHistóricoDePessoa);
+app.get("/emprestimos/pendentes", emprestimo.listarPendentes);
+app.post("/emprestar", emprestimo.emprestar);
+app.patch("/devolver", emprestimo.devolver);
+app.get("/emprestimos/pessoa/:idpessoa", emprestimo.selecionarPorPessoa);
 app.get("/emprestimos/encontrar/data", emprestimo.encontrarEmprestimoPorPeriodo);
 
 // Métodos Funcionário
