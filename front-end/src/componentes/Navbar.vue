@@ -1,6 +1,6 @@
 <script setup>
-    import 'bootstrap/dist/css/bootstrap.min.css';
-    import 'bootstrap/dist/js/bootstrap.min.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
 </script>
 
 <template>
@@ -13,29 +13,31 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#">Home</a>
+              <router-link class="nav-link" aria-current="page" to="/">Home</router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Empréstimos</a>
+              <router-link class="nav-link" to="/about">Empréstimos</router-link>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Cadastros
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Pessoas</a></li>
+                <li><router-link class="dropdown-item" to="/people">Pessoas</router-link></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Livros</a></li> 
+                <li><router-link class="dropdown-item" to="/books">Livros</router-link></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Funcionários</a></li>
+                <li><router-link class="dropdown-item" to="/employees">Funcionários</router-link></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Autores</a></li>
-                <li><a class="dropdown-item" href="#">Categoria</a></li>
-                <li><a class="dropdown-item" href="#">Editora</a></li>
+                <li><router-link class="dropdown-item" to="/autores">Autores</router-link></li>
+                <li><router-link class="dropdown-item" to="/categories">Categoria</router-link></li>
+                <li><router-link class="dropdown-item" to="/publishers">Editora</router-link></li>
               </ul>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-</template>
+  </template>
+
+  
