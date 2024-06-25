@@ -9,7 +9,7 @@ async function listar(request, response){
 
 async function selecionar(request, response){
     await funcionarios
-        .findByPk(request.params.idfuncionarios)
+        .findByPk(request.params.idfuncionario)
         .then(resposta => {response.status(200).json(resposta)})
         .catch(erro => {response.status(500).json(erro)});
 }
@@ -42,7 +42,7 @@ async function alterar(request, response){
         },
         {
             where: {
-                idfuncionarios: request.params.idfuncionarios
+                idfuncionarios: request.params.idfuncionario
             }
         })
         .then(resultado => {response.status(200).json(resultado)})
@@ -53,7 +53,7 @@ async function deletar(request, response){
     await funcionarios
         .destroy({
             where: {
-                idfuncionarios: request.params.idfuncionarios
+                idfuncionarios: request.params.idfuncionario
             }
         })
         .then(resultado => {response.status(200).json(resultado)})
