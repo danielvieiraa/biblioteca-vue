@@ -1,6 +1,6 @@
 <script setup>
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.min.js';
+  import 'bootstrap/dist/css/bootstrap.min.css';
+  import 'bootstrap/dist/js/bootstrap.min.js';
 </script>
 
 <template>
@@ -16,7 +16,7 @@ import 'bootstrap/dist/js/bootstrap.min.js';
               <router-link class="nav-link" aria-current="page" to="/">Home</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/about">Empréstimos</router-link>
+              <router-link class="nav-link" to="/emprestimos">Devolução</router-link>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
