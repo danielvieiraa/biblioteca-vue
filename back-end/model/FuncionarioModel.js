@@ -2,7 +2,7 @@ import { Sequelize } from "sequelize";
 import banco from "../banco.js";
 
 export default banco.define("funcionarios", {
-    idfuncionarios: {
+    idfuncionario: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
