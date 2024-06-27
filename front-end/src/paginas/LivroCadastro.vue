@@ -15,7 +15,7 @@ const paginas = ref('');
 const resumo = ref('');
 const ideditora = ref(''); 
 const editoras = ref([]);
-const categoria = ref('');
+const idcategoria = ref('');
 const categorias = ref([]);
 
 const voltar = () => {
@@ -147,7 +147,7 @@ carregarCategorias();
       </div>
       <div class="mb-3">
         <label for="resumo" class="form-label">Resumo</label>
-        <textarea class="form-control" id="resumo" rows="3" v-model="resumo"></textarea>
+        <textarea class="form-control" id="resumo" rows="3" placeholder="Insira aqui o resumo do livro"v-model="resumo"></textarea>
       </div>
       
       <button type="submit" class="btn btn-primary me-2">Salvar</button>

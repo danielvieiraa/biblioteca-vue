@@ -32,7 +32,7 @@ onMounted(() => {
 <template>
   <Navbar/>
     <!-- Cabeçalho -->
-    <div class="row justify-content-md-center" style="margin-top: 10px;">
+    <div class="row justify-content-md-center my-5">
       <div class="col col-md-auto">
         <div class="jumbotron">
           <h1 class="display-4">Livros</h1>
@@ -49,6 +49,7 @@ onMounted(() => {
     <div class="container">
       <div class="row">
         <div class="col">
+          <div class="table-responsive">
           <table class="table">
             <thead>
               <tr>
@@ -71,11 +72,12 @@ onMounted(() => {
                 <td>{{ livro.ideditora }} - {{ livro.editora.editora }}</td>
                 <td>
                   <button @click="verDetalhes(livro.idlivro)" class="btn btn-primary">Alterar</button>
-                  <button @click="verDetalhes(livro.idlivro)" class="btn btn-primary">Alterar</button>
+                  <button @click="verDetalhes(livro.idlivro)" class="btn btn-primary ms-md-2">Emprestar</button>
                 </td>
               </tr>
             </tbody>
           </table>
+        </div>
         </div>
       </div>
     </div>

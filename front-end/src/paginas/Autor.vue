@@ -33,7 +33,7 @@ onMounted(() => {
   <Navbar/>
   <div class="container">
     <!-- Cabeçalho -->
-    <div class="row justify-content-md-center" style="margin-top: 10px;">
+    <div class="row justify-content-md-center my-5">
       <div class="col col-md-auto">
         <div class="jumbotron">
           <h1 class="display-4">Autores</h1>
