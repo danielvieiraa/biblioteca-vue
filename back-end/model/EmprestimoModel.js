@@ -1,7 +1,5 @@
 import { Sequelize } from "sequelize";
 import banco from "../banco.js";
-import pessoa from "./PessoaModel.js";
-import livro from "./LivroModel.js";
 
 export default banco.define("emprestimo", {
     idemprestimo: {
@@ -14,7 +12,7 @@ export default banco.define("emprestimo", {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-            model: livro,
+            model: 'livro',
             key: 'idlivro'
         }
     },
@@ -22,7 +20,7 @@ export default banco.define("emprestimo", {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-            model: pessoa,
+            model: 'pessoa',
             key: 'idpessoa'
         }
     },

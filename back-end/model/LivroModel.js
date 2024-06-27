@@ -1,7 +1,5 @@
 import { Sequelize } from "sequelize";
 import banco from "../banco.js";
-import editora from "./EditoraModel.js";
-import categoria from "./CategoriaModel.js";
 
 export default banco.define("livro", {
     idlivro: {
@@ -38,7 +36,7 @@ export default banco.define("livro", {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-            model: categoria,
+            model: 'categoria',
             key: 'idcategoria'
         }
     },
@@ -46,7 +44,7 @@ export default banco.define("livro", {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-            model: editora,
+            model: 'editora',
             key: 'ideditora'
         }
     }

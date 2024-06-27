@@ -3,6 +3,7 @@ import moment from "moment";
 import livro from "../model/LivroModel.js"
 import { Op } from "sequelize";
 import banco from "../banco.js";
+import pessoa from "../model/PessoaModel.js";
 
 async function listar(request, response){
     await emprestimo
@@ -136,6 +137,9 @@ async function devolver(request, response){
 
 async function selecionarPorPessoa(request, response){
     const dados = await emprestimo.findAll({
+        include: [
+            { model: livro, attributes: ['titulo'], as: 'livro'}
+        ],
         where: {idpessoa: request.params.idpessoa}
     });
     return response.json(dados);
@@ -161,6 +165,10 @@ async function encontrarEmprestimoPorPeriodo(request, response){
 
 async function listarPendentes(request, response){
     const dados = await emprestimo.findAll({
+        include: [
+            { model: livro, attributes: ['titulo'], as: 'livro'},
+            { model: pessoa, attributes: ['pessoa'], as: 'pessoa'}
+        ],
         where: {devolucao: null}
     });
     return response.json(dados);

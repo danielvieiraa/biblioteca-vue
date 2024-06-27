@@ -9,6 +9,7 @@ import livroautor from "./controller/LivroAutor.js";
 import emprestimo from "./controller/Emprestimo.js";
 import funcionario from "./controller/Funcionario.js";
 import cors from "cors";
+import './model/Relacionamentos.js';
 
 try {
     await banco.authenticate();
@@ -53,6 +54,7 @@ app.delete("/pessoa/:idpessoa", pessoa.deletar);
 // Métodos livro
 app.get("/livro", livro.listar);
 app.get("/livro/:idlivro", livro.selecionar);
+app.get("/livro/categoria/:idcategoria", livro.listarPorCategoria);
 app.post("/livro", livro.criar);
 app.patch("/livro/:idlivro", livro.alterar);
 app.delete("/livro/:idlivro", livro.deletar);
