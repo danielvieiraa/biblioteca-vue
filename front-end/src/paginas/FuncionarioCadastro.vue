@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import axios from 'axios';
 import { useRouter, useRoute } from 'vue-router';
+import Navbar from '@/componentes/Navbar.vue';
 
 const router = useRouter();
 const route = useRoute();
@@ -63,7 +64,8 @@ const excluir = async () => {
 </script>
 
 <template>
-  <div>
+  <Navbar></Navbar>
+  <div class="container">
     <h1>{{ id ? 'Alterar Funcionario' : 'Inserir Funcionario' }}</h1>
     <form @submit.prevent="salvar">
       <div class="mb-3">

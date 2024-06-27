@@ -31,7 +31,7 @@ onMounted(() => {
 
 <template>
   <Navbar/>
-  <div>
+  <div class="container">
     <!-- Cabeçalho -->
     <div class="row justify-content-md-center" style="margin-top: 10px;">
       <div class="col col-md-auto">

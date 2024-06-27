@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Autor from './paginas/Autor.vue';
 import AutorCadastro from './paginas/AutorCadastro.vue';
-import Emprestimo from './paginas/Emprestimo.vue';
+import Devolver from './paginas/Devolver.vue';
 import Emprestar from './paginas/Emprestar.vue';
 import Livro from './paginas/Livro.vue';
 import LivroCadastro from './paginas/LivroCadastro.vue';
@@ -14,7 +14,7 @@ const routes = [
   { path: '/Autores', component: Autor }, // Rota para listar os autores
   { path: '/Autor', component: AutorCadastro }, // Rota para adicionar um novo autor
   { path: '/Autor/:id', component: AutorCadastro }, // Rota para editar um autor existente
-  { path: '/emprestimos', component: Emprestimo}, // Rota para emprestimo
+  { path: '/emprestimos-pendentes', component: Devolver}, // Rota para emprestimo
   { path: '/emprestar', component: Emprestar},
   {path: '/Livros', component: Livro}, // Rota para listar livros
   {path: '/Livro', component: LivroCadastro}, //Rota para adicionar novo livro

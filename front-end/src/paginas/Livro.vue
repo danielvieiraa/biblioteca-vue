@@ -31,7 +31,6 @@ onMounted(() => {
 
 <template>
   <Navbar/>
-  <div>
     <!-- Cabeçalho -->
     <div class="row justify-content-md-center" style="margin-top: 10px;">
       <div class="col col-md-auto">
@@ -47,30 +46,38 @@ onMounted(() => {
     <!-- Fim Cabeçalho -->
 
     <!-- Lista De Registros -->
-    <div class="row">
-      <div class="col">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Código</th>
-              <th scope="col">Livro</th>
-              <th scope="col">Resumo</th>
-              <th scope="col">Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="titulo in dados" :key="titulo.idlivro">
-              <td>{{ titulo.idlivro }}</td>
-              <td>{{ titulo.titulo }}</td>
-              <td>{{ titulo.resumo }}</td>
-              <td>
-                <button @click="verDetalhes(titulo.idlivro)" class="btn btn-primary">Alterar</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Título</th>
+                <th scope="col">Ano</th>
+                <th scope="col">Edição</th>
+                <th scope="col">ID - Categoria</th>
+                <th scope="col">ID - Editora</th>
+                <th scope="col">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="livro in dados" :key="livro.idlivro">
+                <td>{{ livro.idlivro }}</td>
+                <td>{{ livro.titulo }}</td>
+                <td>{{ livro.ano }}</td>
+                <td>{{ livro.edicao }}</td>
+                <td>{{ livro.idcategoria }} - {{ livro.categoria.categoria }}</td>
+                <td>{{ livro.ideditora }} - {{ livro.editora.editora }}</td>
+                <td>
+                  <button @click="verDetalhes(livro.idlivro)" class="btn btn-primary">Alterar</button>
+                  <button @click="verDetalhes(livro.idlivro)" class="btn btn-primary">Alterar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
 </template>
 

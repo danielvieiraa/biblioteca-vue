@@ -53,34 +53,34 @@
     <!-- Fim Cabeçalho -->
 
     <!-- Lista De Registros -->
-    <div class="container-fluid">
-    <div class="row">
-      <div class="col p-4">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Código</th>
-              <th scope="col">Livro</th>
-              <th scope="col">Pessoa</th>
-              <th scope="col">Data de empréstimo</th>
-              <th scope="col">Data de vencimento</th>
-              <th scope="col">Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="emprestimo in dados" :key="emprestimo.idautor">
-              <td>{{ emprestimo.idemprestimo }}</td>
-              <td>{{ emprestimo.idlivro }}</td>
-              <td>{{ emprestimo.idpessoa }}</td>
-              <td>{{ emprestimo.emprestimo }}</td>
-              <td>{{ emprestimo.vencimento }}</td>
-              <td>
-                <button @click="devolver(emprestimo.idemprestimo)" class="btn btn-primary">Devolver</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="container">
+      <div class="row">
+        <div class="col p-4">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Código</th>
+                <th scope="col">ID - Livro</th>
+                <th scope="col">ID - Pessoa</th>
+                <th scope="col">Data de empréstimo</th>
+                <th scope="col">Data de vencimento</th>
+                <th scope="col">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="emprestimo in dados" :key="emprestimo.idautor">
+                <td>{{ emprestimo.idemprestimo }}</td>
+                <td>{{ emprestimo.idlivro }} - {{ emprestimo.livro.titulo }}</td>
+                <td>{{ emprestimo.idpessoa }} - {{ emprestimo.pessoa.pessoa }}</td>
+                <td>{{ emprestimo.emprestimo }}</td>
+                <td>{{ emprestimo.vencimento }}</td>
+                <td>
+                  <button @click="devolver(emprestimo.idemprestimo)" class="btn btn-primary">Devolver</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
 </template>
