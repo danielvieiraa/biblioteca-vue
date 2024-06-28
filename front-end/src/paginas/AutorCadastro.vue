@@ -21,7 +21,7 @@ const inserir = async () => {
     await axios.post('http://localhost:4000/autor/', json);
     voltar();
   } catch (error) {
-    console.error('Erro ao inserir autor:', error);
+    window.alert('Erro ao inserir autor:', error);
   }
 };
 
@@ -63,8 +63,8 @@ const excluir = async () => {
     <h1>{{ id ? 'Alterar Autor' : 'Inserir Autor' }}</h1>
     <form @submit.prevent="salvar">
       <div class="mb-3">
-        <label for="autor" class="form-label">Nome do Autor</label>
-        <input type="text" class="form-control" id="autor" v-model="autor" />
+        <label for="autor" class="form-label">Insira o nome do autor:</label>
+        <input type="text" placeholder="Insira aqui" class="form-control" id="autor" v-model="autor" />
       </div>
       <button type="submit" class="btn btn-primary me-2">Salvar</button>
       <button type="button" class="btn btn-secondary me-2" @click="voltar">Cancelar</button>

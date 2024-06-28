@@ -16,27 +16,36 @@ async function emprestar(request, response){
     let dataEmprestimo = moment();
     let dataVencimento = moment().add(7, 'days').calendar();
 
-    const l = await livro.findByPk(request.body.idlivro);
-
-    if(l.emprestado){
-        response.status(400).json({"mensagem":"Livro já emprestado"});
-        return;
-    }
-
-    const countEmprestimosAtivos = await emprestimo.count({
-        where: {
-            idpessoa: request.body.idpessoa,
-            devolucao: null
-        }
-    });
-
-    if(countEmprestimosAtivos >= 3){
-        response.status(400).json({"mensagem":"Número máximo de empréstimos ativos atingido"});
-    }
-
     const t = await banco.transaction();
 
     try{
+        console.log('Request Body:', request.body); // Log da request body
+
+        const l = await livro.findByPk(request.body.idlivro);
+
+        if (!l) {
+            console.error('Livro não encontrado:', request.body.idlivro);
+            response.status(404).json({ "mensagem": "Livro não encontrado" });
+            return;
+        }
+
+        if(l.emprestado){
+            response.status(400).json({"mensagem":"Livro já emprestado"});
+            return;
+        }
+
+        const countEmprestimosAtivos = await emprestimo.count({
+            where: {
+                idpessoa: request.body.idpessoa,
+                devolucao: null
+            }
+        });
+    
+        if(countEmprestimosAtivos >= 3){
+            response.status(400).json({"mensagem":"Número máximo de empréstimos ativos atingido"});
+            return;
+        }
+
         await emprestimo.create({
             idlivro: request.body.idlivro,
             idpessoa: request.body.idpessoa,
@@ -60,6 +69,7 @@ async function emprestar(request, response){
         await t.commit();
         response.status(200).json({"mensagem":"Empréstimo realizado com sucesso!","total": countEmprestimosAtivos});
     } catch(erro) {
+        console.error("Erro ao emprestar o livro:", erro); // Log do erro detalhado
         if(!t.finished){
             await t.rollback();
         }

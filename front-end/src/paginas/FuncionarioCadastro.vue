@@ -66,18 +66,18 @@ const excluir = async () => {
 <template>
   <Navbar></Navbar>
   <div class="container">
-    <h1>{{ id ? 'Alterar Funcionario' : 'Inserir Funcionario' }}</h1>
+    <h1>{{ id ? 'Alterar Funcionário' : 'Inserir Funcionário' }}</h1>
     <form @submit.prevent="salvar">
       <div class="mb-3">
-        <label for="autor" class="form-label">Nome do Funcionario</label>
-        <input type="text" class="form-control" id="nome" v-model="nome" />
+        <label for="autor" class="form-label">Insira o nome do funcionário:</label>
+        <input type="text" placeholder="Insira aqui" class="form-control" id="nome" v-model="nome" />
       </div>
       <div class="mb-3">
-        <label for="autor" class="form-label">Email do Funcionario</label>
-        <input type="text" class="form-control" id="email" v-model="email" />
+        <label for="autor" class="form-label">Insira o email do funcionário:</label>
+        <input type="text" placeholder="Insira aqui" class="form-control" id="email" v-model="email" />
       </div>
       <div class="mb-3">
-        <label for="autor" class="form-label">Senha</label>
+        <label for="autor" class="form-label">Senha:</label>
         <input type="text" class="form-control" id="senha" v-model="senha" />
       </div>
       <button type="submit" class="btn btn-primary me-2">Salvar</button>

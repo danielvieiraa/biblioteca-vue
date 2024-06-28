@@ -15,7 +15,7 @@ const routes = [
   { path: '/Autor', component: AutorCadastro }, // Rota para adicionar um novo autor
   { path: '/Autor/:id', component: AutorCadastro }, // Rota para editar um autor existente
   { path: '/emprestimos-pendentes', component: Devolver}, // Rota para emprestimo
-  { path: '/emprestar', component: Emprestar},
+  { path: '/emprestar/:idlivro', component: Emprestar},
   {path: '/Livros', component: Livro}, // Rota para listar livros
   {path: '/Livro', component: LivroCadastro}, //Rota para adicionar novo livro
   {path: '/Livro/:id', component: LivroCadastro}, // Rota para Altera Livro

@@ -24,6 +24,10 @@ const verDetalhes = (id) => {
   router.push(`/Livro/${id}`);
 };
 
+const emprestar = (id) => {
+  router.push(`/emprestar/${id}`);
+}
+
 onMounted(() => {
   listarlivros();
 });
@@ -72,7 +76,7 @@ onMounted(() => {
                 <td>{{ livro.ideditora }} - {{ livro.editora.editora }}</td>
                 <td>
                   <button @click="verDetalhes(livro.idlivro)" class="btn btn-primary">Alterar</button>
-                  <button @click="verDetalhes(livro.idlivro)" class="btn btn-primary ms-md-2">Emprestar</button>
+                  <button @click="emprestar(livro.idlivro)" v-show="!livro.emprestado" class="btn btn-primary ms-md-2">Emprestar</button>
                 </td>
               </tr>
             </tbody>
