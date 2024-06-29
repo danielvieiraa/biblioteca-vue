@@ -13,6 +13,7 @@ const ano = ref('');
 const edicao = ref('');
 const paginas = ref('');
 const resumo = ref('');
+const copias = ref('');
 const ideditora = ref(''); 
 const editoras = ref([]);
 const idcategoria = ref('');
@@ -50,6 +51,7 @@ const inserir = async () => {
       paginas: paginas.value,
       resumo: resumo.value,
       emprestado: false,
+      copias: copias.value,
       ideditora: ideditora.value,
       idcategoria: idcategoria.value
     };
@@ -71,6 +73,7 @@ const alterar = async () => {
       paginas: paginas.value,
       resumo: resumo.value,
       emprestado: false,
+      copias: copias.value,
       ideditora: ideditora.value,
       idcategoria: idcategoria.value
     };
@@ -120,12 +123,16 @@ carregarCategorias();
         <input type="text" class="form-control" id="ano" v-model="ano" />
       </div>
       <div class="mb-3">
-        <label for="edicao" class="form-label">Edicao</label>
+        <label for="edicao" class="form-label">Edição</label>
         <input type="text" class="form-control" id="edicao" v-model="edicao" />
       </div>
       <div class="mb-3">
-        <label for="paginas" class="form-label">Paginas</label>
+        <label for="paginas" class="form-label">Páginas</label>
         <input type="text" class="form-control" id="paginas" v-model="paginas" />
+      </div>
+      <div class="mb-3">
+        <label for="copias" class="form-label">Número de cópias</label>
+        <input type="text" class="form-control" id="copias" v-model="copias" />
       </div>
       <div class="mb-3">
         <label for="ideditora" class="form-label">Editora</label>
