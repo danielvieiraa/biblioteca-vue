@@ -40,7 +40,7 @@
     <Navbar></Navbar>
     <div class="container">
         <div>
-          <h1>Emprestarlivro</h1>
+          <h1>Emprestar livro</h1>
           <form @submit.prevent="salvar">
             <div class="mb-3">
                 <label>Insira o ID da pessoa que vai emprestar o livro: </label>

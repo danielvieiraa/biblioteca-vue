@@ -61,6 +61,7 @@ onMounted(() => {
                 <th scope="col">Título</th>
                 <th scope="col">Ano</th>
                 <th scope="col">Edição</th>
+                <th scope="col">Número de cópias</th>
                 <th scope="col">ID - Categoria</th>
                 <th scope="col">ID - Editora</th>
                 <th scope="col">Ações</th>
@@ -72,6 +73,7 @@ onMounted(() => {
                 <td>{{ livro.titulo }}</td>
                 <td>{{ livro.ano }}</td>
                 <td>{{ livro.edicao }}</td>
+                <td>{{ livro.copias }}</td>
                 <td>{{ livro.idcategoria }} - {{ livro.categoria.categoria }}</td>
                 <td>{{ livro.ideditora }} - {{ livro.editora.editora }}</td>
                 <td>

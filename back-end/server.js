@@ -71,7 +71,7 @@ app.get("/emprestimos/pendentes", emprestimo.listarPendentes);
 app.post("/emprestar", emprestimo.emprestar);
 app.patch("/devolver", emprestimo.devolver);
 app.get("/emprestimos/pessoa/:idpessoa", emprestimo.selecionarPorPessoa);
-app.get("/emprestimos/encontrar/data", emprestimo.encontrarEmprestimoPorPeriodo);
+app.get("/emprestimos/atrasados", emprestimo.listarEmprestimosAtrasados);
 
 // Métodos Funcionário
 app.get("/funcionario", funcionario.listar);

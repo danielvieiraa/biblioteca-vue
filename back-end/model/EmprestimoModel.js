@@ -35,5 +35,9 @@ export default banco.define("emprestimo", {
     devolucao: {
         type: Sequelize.DATEONLY,
         allowNull: true
+    },
+    atrasado: {
+        type: Sequelize.CHAR,
+        allowNull: true
     }
 })

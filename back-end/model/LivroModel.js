@@ -32,6 +32,10 @@ export default banco.define("livro", {
         type: Sequelize.BOOLEAN,
         defaultValue: false
     },
+    copias: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
     idcategoria: {
         type: Sequelize.INTEGER,
         allowNull: false,
