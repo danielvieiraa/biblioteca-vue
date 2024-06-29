@@ -6,7 +6,7 @@
 
     const router = useRouter();
     const route = useRoute();
-    const idlivro = ref(route.params.id);
+    const idlivro = ref(route.params.idlivro);
     const idpessoa = ref('');
 
     const voltar = () => {
@@ -19,10 +19,15 @@
                 idlivro: idlivro.value,
                 idpessoa: idpessoa.value
             };
-            await axios.post('http://localhost:4000/emprestar', json);
+            const response = await axios.post('http://localhost:4000/emprestar', json);
+            window.alert(response.data.mensagem);
             voltar();
         } catch (error) {
-            window.alert('Erro ao emprestar o livro:', error);
+            if(error.response && error.response.data && error.response.data.mensagem) {
+                window.alert(`Erro: ${error.response.data.mensagem}`)
+            } else {
+                window.alert(`Erro desconhecido ao emprestar o livro: ${error.mensagem}`);
+            }
         }
     };
 
@@ -35,7 +40,7 @@
     <Navbar></Navbar>
     <div class="container">
         <div>
-          <h1>Emprestando o livro</h1>
+          <h1>Emprestarlivro</h1>
           <form @submit.prevent="salvar">
             <div class="mb-3">
                 <label>Insira o ID da pessoa que vai emprestar o livro: </label>

@@ -19,12 +19,9 @@ async function emprestar(request, response){
     const t = await banco.transaction();
 
     try{
-        console.log('Request Body:', request.body); // Log da request body
-
         const l = await livro.findByPk(request.body.idlivro);
 
         if (!l) {
-            console.error('Livro não encontrado:', request.body.idlivro);
             response.status(404).json({ "mensagem": "Livro não encontrado" });
             return;
         }
@@ -69,7 +66,6 @@ async function emprestar(request, response){
         await t.commit();
         response.status(200).json({"mensagem":"Empréstimo realizado com sucesso!","total": countEmprestimosAtivos});
     } catch(erro) {
-        console.error("Erro ao emprestar o livro:", erro); // Log do erro detalhado
         if(!t.finished){
             await t.rollback();
         }
