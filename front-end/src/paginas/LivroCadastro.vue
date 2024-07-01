@@ -37,7 +37,7 @@ const carregarCategorias = async () => {
     const response = await axios.get('http://localhost:4000/categoria');
     categorias.value = response.data;
   } catch (error) {
-    console.error('Erro ao carregar Categorias:', error);
+    window.alert('Erro ao carregar Categorias:', error);
   }
 };
 
@@ -57,9 +57,10 @@ const inserir = async () => {
     };
     console.log('Enviando dados:', json); // Debug: mostra os dados enviados
     await axios.post('http://localhost:4000/livro/', json);
+    window.alert('Livro cadastrado com sucesso!');
     voltar();
   } catch (error) {
-    console.error('Erro ao inserir Livro:', error);
+    window.alert('Erro ao inserir Livro:', error);
   }
 };
 
@@ -79,9 +80,10 @@ const alterar = async () => {
     };
     console.log('Enviando dados:', json);
     await axios.put(`http://localhost:4000/livro/${id.value}`, json);
+    window.alert('Livro alterado com sucesso!');
     voltar();
   } catch (error) {
-    console.error('Erro ao alterar livro:', error);
+    window.alert('Erro ao alterar livro:', error);
   }
 };
 const salvar = async () => {

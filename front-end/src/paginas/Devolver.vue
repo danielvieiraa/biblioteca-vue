@@ -68,7 +68,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="emprestimo in dados" :key="emprestimo.idautor">
+              <tr v-for="emprestimo in dados" :key="emprestimo.idemprestimo">
                 <td>{{ emprestimo.idemprestimo }}</td>
                 <td>{{ emprestimo.idlivro }} - {{ emprestimo.livro.titulo }}</td>
                 <td>{{ emprestimo.idpessoa }} - {{ emprestimo.pessoa.pessoa }}</td>

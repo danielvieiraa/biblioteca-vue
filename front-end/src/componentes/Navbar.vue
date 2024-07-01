@@ -23,15 +23,15 @@
                 Cadastros
               </a>
               <ul class="dropdown-menu">
-                <li><router-link class="dropdown-item" to="/people">Pessoas</router-link></li>
+                <li><router-link class="dropdown-item" to="/pessoas">Pessoas</router-link></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><router-link class="dropdown-item" to="/livros">Livros</router-link></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><router-link class="dropdown-item" to="/funcionarios">Funcionários</router-link></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><router-link class="dropdown-item" to="/autores">Autores</router-link></li>
-                <li><router-link class="dropdown-item" to="/categories">Categoria</router-link></li>
-                <li><router-link class="dropdown-item" to="/publishers">Editora</router-link></li>
+                <li><router-link class="dropdown-item" to="/categorias">Categoria</router-link></li>
+                <li><router-link class="dropdown-item" to="/editoras">Editora</router-link></li>
               </ul>
             </li>
           </ul>

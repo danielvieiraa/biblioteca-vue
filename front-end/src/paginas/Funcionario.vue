@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
 import Navbar from '@/componentes/Navbar.vue';
+
 const router = useRouter();
 const funcionarios = ref([]);
 
