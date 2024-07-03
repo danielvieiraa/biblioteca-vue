@@ -1,14 +1,14 @@
-import funcionarios from "../model/FuncionarioModel.js";
+import funcionario from "../model/FuncionarioModel.js";
 
 async function listar(request, response){
-    await funcionarios
+    await funcionario
         .findAll()
         .then(resposta => {response.status(200).json(resposta)})
         .catch(erro => {response.status(500).json(erro)});
 }
 
 async function selecionar(request, response){
-    await funcionarios
+    await funcionario
         .findByPk(request.params.idfuncionario)
         .then(resposta => {response.status(200).json(resposta)})
         .catch(erro => {response.status(500).json(erro)});
@@ -19,7 +19,7 @@ async function criar(request, response){
         response.status(500).send("Parâmetros obrigatórios faltando.");
     }
 
-    await funcionarios
+    await funcionario
         .create({
             nome: request.body.nome,
             email: request.body.email,
@@ -34,7 +34,7 @@ async function alterar(request, response){
         response.status(500).send("Parâmetros obrigatórios faltando.");
     }
 
-    await funcionarios
+    await funcionario
         .update({
             nome: request.body.nome,
             email: request.body.email,
@@ -42,7 +42,7 @@ async function alterar(request, response){
         },
         {
             where: {
-                idfuncionarios: request.params.idfuncionario
+                idfuncionario: request.params.idfuncionario
             }
         })
         .then(resultado => {response.status(200).json(resultado)})
@@ -50,10 +50,10 @@ async function alterar(request, response){
 }
 
 async function deletar(request, response){
-    await funcionarios
+    await funcionario
         .destroy({
             where: {
-                idfuncionarios: request.params.idfuncionario
+                idfuncionario: request.params.idfuncionario
             }
         })
         .then(resultado => {response.status(200).json(resultado)})

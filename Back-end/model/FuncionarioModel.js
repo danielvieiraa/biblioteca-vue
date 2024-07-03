@@ -1,7 +1,7 @@
 import { Sequelize } from "sequelize";
 import banco from "../banco.js";
 
-export default banco.define("funcionarios", {
+export default banco.define("funcionario", {
     idfuncionario: {
         type: Sequelize.INTEGER,
         primaryKey: true,

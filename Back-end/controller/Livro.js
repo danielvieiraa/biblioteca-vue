@@ -32,7 +32,7 @@ async function criar(request, response){
             ano: request.body.ano,
             paginas: request.body.paginas,
             edicao: request.body.edicao,
-            resumo: request.body.resumo || null,
+            resumo: request.body.resumo,
             copias: request.body.copias,
             idcategoria: request.body.idcategoria,
             ideditora: request.body.ideditora
@@ -52,7 +52,7 @@ async function alterar(request, response){
             ano: request.body.ano,
             paginas: request.body.paginas,
             edicao: request.body.edicao,
-            resumo: request.body.resumo || null,
+            resumo: request.body.resumo,
             copias: request.body.copias,
             idcategoria: request.body.idcategoria,
             ideditora: request.body.ideditora
