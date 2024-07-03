@@ -47,7 +47,6 @@ CREATE TABLE livro (
 	paginas INT NOT NULL,
 	edicao INT NOT NULL,
 	resumo TEXT NOT NULL,
-	emprestado BOOLEAN,
 	copias INT NOT NULL,
 	idcategoria INT NOT NULL,
 	ideditora INT NOT NULL,
