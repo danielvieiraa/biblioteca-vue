@@ -28,10 +28,6 @@ export default banco.define("livro", {
         type: Sequelize.TEXT,
         allowNull: true
     },
-    emprestado: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false
-    },
     copias: {
         type: Sequelize.INTEGER,
         allowNull: false

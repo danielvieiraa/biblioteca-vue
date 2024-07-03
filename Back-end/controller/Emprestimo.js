@@ -26,8 +26,8 @@ async function emprestar(request, response){
             return;
         }
 
-        if(l.emprestado){
-            response.status(400).json({"mensagem":"Livro já emprestado"});
+        if(l.copias <= 0){
+            response.status(400).json({"mensagem":"O livro não possui cópias disponíveis"});
             return;
         }
 
@@ -67,11 +67,8 @@ async function emprestar(request, response){
             });
         
         await livro.update({
-            emprestado: true
+            where: {idlivro: request.body.idlivro}
         },
-            {
-                where: {idlivro: request.body.idlivro}
-            },
             {
                 transaction: t
             });
@@ -135,11 +132,8 @@ async function devolver(request, response){
             });
         
         await livro.update({
-            emprestado: false
-        },
-            {
             where: {idlivro: idlivro}
-            },
+        },
             {
                 transaction: t
             });
