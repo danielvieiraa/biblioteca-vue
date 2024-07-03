@@ -61,6 +61,20 @@ const excluir = async () => {
     }
   }
 };
+const carregarPessoa = async () => {
+  if (id.value) {
+    try {
+      const response = await axios.get(`http://localhost:4000/pessoa/${id.value}`);
+      const pessoas = response.data;
+      pessoa.value = pessoas.pessoa,
+      email.value = pessoas.email,
+      telefone.value = pessoas.telefone
+    } catch (error) {
+      console.error('Erro ao carregar Pessoa:', error);
+    }
+  }
+};
+carregarPessoa();
 </script>
 
 <template>

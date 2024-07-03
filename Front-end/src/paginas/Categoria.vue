@@ -21,7 +21,7 @@ const adicionar = () => {
 };
 
 const verDetalhes = (id) => {
-  router.push(`/Categorias/${id}`);
+  router.push(`/Categoria/${id}`);
 };
 
 

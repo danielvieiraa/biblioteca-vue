@@ -38,7 +38,7 @@ const alterar = async () => {
     const json = {
       autor: autor.value, // Acessando o valor de autor corretamente
     };
-    await axios.put(`http://localhost:4000/autor/${id.value}`, json);
+    await axios.patch(`http://localhost:4000/autor/${id.value}`, json);
     voltar();
   } catch (error) {
     console.error('Erro ao alterar autor:', error);
@@ -55,6 +55,18 @@ const excluir = async () => {
     }
   }
 };
+const carregarautor = async () => {
+  if (id.value) {
+    try {
+      const response = await axios.get(`http://localhost:4000/autor/${id.value}`);
+      const autores = response.data;
+      autor.value = autores.autor
+    } catch (error) {
+      console.error('Erro ao carregar Autor:', error);
+    }
+  }
+};
+carregarautor();
 </script>
 
 <template>

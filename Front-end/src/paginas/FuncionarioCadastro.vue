@@ -44,7 +44,7 @@ const alterar = async () => {
       email: email.value,
       senha: senha.value,
     };
-    await axios.put(`http://localhost:4000/funcionario/${id.value}`, json);
+    await axios.patch(`http://localhost:4000/funcionario/${id.value}`, json);
     voltar();
   } catch (error) {
     console.error('Erro ao alterar funcionario:', error);
@@ -61,6 +61,19 @@ const excluir = async () => {
     }
   }
 };
+const carregarfuncionario = async () => {
+  if (id.value) {
+    try {
+      const response = await axios.get(`http://localhost:4000/funcionario/${id.value}`);
+      const funcionarios = response.data;
+      nome.value = funcionarios.nome;
+      email.value = funcionarios.email;
+    } catch (error) {
+      console.error('Erro ao carregar Funcionario:', error);
+    }
+  }
+};
+carregarfuncionario();
 </script>
 
 <template>

@@ -79,7 +79,7 @@ const alterar = async () => {
       idcategoria: idcategoria.value
     };
     console.log('Enviando dados:', json);
-    await axios.put(`http://localhost:4000/livro/${id.value}`, json);
+    await axios.patch(`http://localhost:4000/livro/${id.value}`, json);
     window.alert('Livro alterado com sucesso!');
     voltar();
   } catch (error) {
@@ -105,10 +105,30 @@ const excluir = async () => {
     }
   }
 };
+const carregarLivro = async () => {
+  if (id.value) {
+    try {
+      const response = await axios.get(`http://localhost:4000/livro/${id.value}`);
+      const livro = response.data;
+      titulo.value = livro.titulo;
+      ano.value = livro.ano;
+      edicao.value = livro.edicao;
+      paginas.value = livro.paginas;
+      resumo.value = livro.resumo;
+      copias.value = livro.copias;
+      ideditora.value = livro.ideditora;
+      idcategoria.value = livro.idcategoria;
+    } catch (error) {
+      console.error('Erro ao carregar livro:', error);
+    }
+  }
+};
+
 
 
 carregarEditoras();
 carregarCategorias();
+carregarLivro();
 </script>
 
 <template>

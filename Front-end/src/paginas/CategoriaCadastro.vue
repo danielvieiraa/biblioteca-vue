@@ -56,6 +56,18 @@ const excluir = async () => {
     }
   }
 };
+const carregarcategoria = async () => {
+  if (id.value) {
+    try {
+      const response = await axios.get(`http://localhost:4000/categoria/${id.value}`);
+      const categorias = response.data;
+      categoria.value = categorias.categoria;
+    } catch (error) {
+      console.error('Erro ao carregar Autor:', error);
+    }
+  }
+};
+carregarcategoria();
 </script>
 
 <template>

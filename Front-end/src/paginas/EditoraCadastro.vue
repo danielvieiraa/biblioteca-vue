@@ -56,6 +56,18 @@ const excluir = async () => {
     }
   }
 };
+const carregareditora = async () => {
+  if (id.value) {
+    try {
+      const response = await axios.get(`http://localhost:4000/editora/${id.value}`);
+      const editoras = response.data;
+      editora.value = editoras.editora;
+    } catch (error) {
+      console.error('Erro ao carregar Autor:', error);
+    }
+  }
+};
+carregareditora();
 </script>
 
 <template>
