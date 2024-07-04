@@ -1,47 +1,53 @@
 CREATE TABLE autor (
-	idautor INT PRIMARY KEY,
-	autor VARCHAR(50) NOT NULL
+	idautor BIGSERIAL,
+	autor VARCHAR(50) NOT NULL,
+	CONSTRAINT pk_autor PRIMARY KEY (idpessoa)
 );
 
 CREATE TABLE categoria (
-	idcategoria INT PRIMARY KEY,
-	categoria VARCHAR(50) NOT NULL
+	idcategoria BIGSERIAL,
+	categoria VARCHAR(50) NOT NULL,
+	CONSTRAINT pk_categoria PRIMARY KEY (idcategoria)
 );
 
 CREATE TABLE editora (
-	ideditora INT PRIMARY KEY,
-	editora VARCHAR(50) NOT NULL
+	ideditora BIGSERIAL,
+	editora VARCHAR(50) NOT NULL,
+	CONSTRAINT pk_editora PRIMARY KEY (ideditora)
 );
 
 CREATE TABLE emprestimo (
-	idemprestimo INT PRIMARY KEY,
+	idemprestimo BIGSERIAL,
 	idlivro INT NOT NULL,
 	idpessoa INT NOT NULL,
-	emprestimo DATE NOT NULL,
+	emprestimo DATE NOT NULL DEFAULT CURRENT_DATE,
 	vencimento DATE NOT NULL,
 	devolucao DATE,
 	atrasado CHAR(1),
-	FOREIGN KEY (idlivro) REFERENCES livro(idlivro),
-	FOREIGN KEY (idpessoa) REFERENCES pessoa(idpessoa)
+	CONSTRAINT pk_emprestimo PRIMARY KEY (idemprestimo),
+	CONSTRAINT fk_emprestimo_livro FOREIGN KEY (idlivro) REFERENCES livro(idlivro),
+	CONSTRAINT fk_emprestimo_pessoa FOREIGN KEY (idpessoa) REFERENCES pessoa(idpessoa)
 );
 
 CREATE TABLE funcionario (
-	idfuncionario INT PRIMARY KEY,
+	idfuncionario BIGSERIAL,
 	nome VARCHAR(50) NOT NULL,
 	email VARCHAR(50) NOT NULL,
-	senha VARCHAR(50) NOT NULL
+	senha VARCHAR(50) NOT NULL,
+	CONSTRAINT pk_funcionario PRIMARY KEY (idfuncionario)
 );
 
 CREATE TABLE livroautor (
-	idlivroautor INT PRIMARY KEY,
+	idlivroautor BIGSERIAL NOT NULL,
 	idautor INT NOT NULL,
 	idlivro INT NOT NULL,
-	FOREIGN KEY (idautor) REFERENCES autor(idautor),
-	FOREIGN KEY (idlivro) REFERENCES livro(idlivro)
+	CONSTRAINT pk_livroautor PRIMARY KEY (idlivroautor),
+	CONSTRAINT fk_livroautor_autor FOREIGN KEY (idautor) REFERENCES autor(idautor),
+	CONSTRAINT fk_livroautor_livro FOREIGN KEY (idlivro) REFERENCES livro(idlivro)
 );
 
 CREATE TABLE livro (
-	idlivro INT PRIMARY KEY,
+	idlivro BIGSERIAL NOT NULL,
 	titulo VARCHAR(100) NOT NULL,
 	ano INT NOT NULL,
 	paginas INT NOT NULL,
@@ -50,15 +56,17 @@ CREATE TABLE livro (
 	copias INT NOT NULL,
 	idcategoria INT NOT NULL,
 	ideditora INT NOT NULL,
-	FOREIGN KEY (idcategoria) REFERENCES categoria(idcategoria),
-	FOREIGN KEY (ideditora) REFERENCES editora(ideditora)
+	CONSTRAINT pk_livro PRIMARY KEY (idlivro),
+	CONSTRAINT fk_livro_categoria FOREIGN KEY (idcategoria) REFERENCES categoria(idcategoria),
+	CONSTRAINT fk_livro_editora FOREIGN KEY (ideditora) REFERENCES editora(ideditora)
 );
 
 CREATE TABLE pessoa (
-	idpessoa INT PRIMARY KEY,
+	idpessoa BIGSERIAL NOT NULL,
 	pessoa VARCHAR(50) NOT NULL,
 	email VARCHAR(80) NOT NULL,
-	telefone VARCHAR(20) NOT NULL
+	telefone VARCHAR(20) NOT NULL,
+	CONSTRAINT pk_pessoa PRIMARY KEY (idpessoa)
 );
 
 -- Store procedure 
@@ -81,26 +89,24 @@ ALTER PROCEDURE public."marcar_atrasado"()
 OWNER TO postgres;
 
 -- Triggers
-CREATE OR REPLACE FUNCTION atualiza_copias_emprestadas_trigger()
+CREATE OR REPLACE FUNCTION atualiza_copias()
 RETURNS TRIGGER AS $$
 BEGIN
-    IF NEW.devolucao IS NOT NULL AND OLD.devolucao IS NULL THEN
-        -- Atualiza o contador de cópias emprestadas ao devolver um livro
+    IF TG_OP = 'INSERT' THEN
+        UPDATE livro
+        SET copias = copias - 1
+        WHERE idlivro = NEW.idlivro;
+    ELSIF TG_OP = 'UPDATE' AND NEW.devolucao IS NOT NULL THEN
         UPDATE livro
         SET copias = copias + 1
         WHERE idlivro = NEW.idlivro;
     END IF;
-	IF NEW.emprestimo = CURRENT_DATE THEN
-		UPDATE livro
-		SET copias = copias - 1
-        WHERE idlivro = NEW.idlivro;
-	END IF;
-
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER atualiza_copias_emprestadas
-AFTER UPDATE ON emprestimo
+CREATE TRIGGER trigger_atualiza_copias
+AFTER INSERT OR UPDATE OF devolucao
+ON emprestimo
 FOR EACH ROW
-EXECUTE FUNCTION atualiza_copias_emprestadas_trigger();
+EXECUTE FUNCTION atualiza_copias();
