@@ -15,6 +15,7 @@ import EditoraCadastro from './paginas/EditoraCadastro.vue';
 import Categoria from './paginas/Categoria.vue';
 import CategoriaCadastro from './paginas/CategoriaCadastro.vue';
 import PessoaHistorico from './paginas/PessoaHistorico.vue';
+import EmprestimosAtrasados from './paginas/EmprestimosAtrasados.vue';
 
 const routes = [
   { path: '/', component: Home },
@@ -38,7 +39,8 @@ const routes = [
   {path: '/Categorias', component: Categoria}, //Rota para listar categoria
   {path: '/Categoria', component: CategoriaCadastro}, //Rota para Inserir Categoria
   {path: '/Categoria/:id', component: CategoriaCadastro}, //Rota para Alterar Categoria
-  {path: '/historico/pessoa/:idpessoa', component: PessoaHistorico} //Exibir histórico de empréstimos da pessoa
+  {path: '/historico/pessoa/:idpessoa', component: PessoaHistorico}, //Exibir histórico de empréstimos da pessoa
+  {path: '/emprestimos-atrasados', component: EmprestimosAtrasados} //Exibir atrasados
 ];
 
 const router = createRouter({

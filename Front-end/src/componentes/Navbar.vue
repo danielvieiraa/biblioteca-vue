@@ -18,6 +18,9 @@
             <li class="nav-item">
               <router-link class="nav-link" to="/emprestimos-pendentes">Devolução</router-link>
             </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/emprestimos-atrasados">Atrasados</router-link>
+            </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Cadastros
