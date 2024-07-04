@@ -131,7 +131,7 @@ async function listarEmprestimosAtrasados(request, response) {
             where: {
                 idpessoa: request.body.idpessoa,
                 devolucao: null,
-                atrasado: { [Op.ne]: 'N' }
+                atrasado: { [Op.ne]: 'S' }
             }
         });
         response.status(200).json(dados);
